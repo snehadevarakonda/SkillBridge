@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - SkillBridge</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/leaderboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .main-leaderboard {
+            display: flex;
+            gap: 2rem;
+            margin-top: 100px;
+            justify-content: center;
+        }
+        .peers-section {
+            background: var(--white);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            width: 700px;
+            min-height: 500px;
+        }
+        .peer-card {
+            background: var(--background-color);
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 1.5rem 1rem;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .peer-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        .peer-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+        .peer-role {
+            font-size: 0.95rem;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+        .peer-progress {
+            width: 100%;
+            background: var(--border-color);
+            border-radius: 0.5rem;
+            height: 8px;
+            margin: 0.5rem 0;
+            overflow: hidden;
+        }
+        .peer-progress-bar {
+            height: 100%;
+            border-radius: 0.5rem;
+            background: var(--primary-color);
+        }
+        .peer-status {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        .side-leaderboard {
+            background: var(--white);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 2rem 1.5rem;
+            width: 320px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .side-leaderboard h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .top-user {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .top-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid gold;
+            margin-bottom: 0.5rem;
+        }
+        .top-name {
+            font-weight: 700;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+        .top-status {
+            background: var(--primary-color);
+            color: var(--white);
+            font-size: 0.9rem;
+            border-radius: 1rem;
+            padding: 0.2rem 0.8rem;
+            margin-top: 0.3rem;
+        }
+        .leaderboard-list {
+            width: 100%;
+        }
+        .leaderboard-entry {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 1rem;
+        }
+        .entry-rank {
+            font-weight: 700;
+            color: var(--primary-color);
+            width: 1.5rem;
+            text-align: right;
+        }
+        .entry-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .entry-name {
+            font-weight: 500;
+            color: var(--text-color);
+            flex: 1;
+        }
+        .entry-status {
+            font-size: 0.85rem;
+            color: var(--light-text);
+        }
+        .crown {
+            font-size: 1.3rem;
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <!-- <header>
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🤖</span>
+                <h1>SkillBridge</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="student_dashboard.html">Dashboard</a></li>
+                    <li><a href="leaderboard.html" class="active">Leaderboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header> -->
+    <main>
+        <div class="main-leaderboard">
+            <section class="peers-section">
+                <div class="peer-card" data-student-id="1">
+                    <img src="../images/avatars/image 5.jpg" alt="Varsha Sharma" class="peer-avatar">
+                    <div class="peer-name">Varsha Sharma</div>
+                    <div class="peer-role">Web Developer</div>
+                    <div class="peer-progress"><div class="peer-progress-bar" style="width: 100%"></div></div>
+                    <div class="peer-status">100% completed</div>
+                </div>
+                <div class="peer-card" data-student-id="2">
+                    <img src="../images/avatars/image 2.jpg" alt="Pranay Charlapally" class="peer-avatar">
+                    <div class="peer-name">Pranay Charlapally</div>
+                    <div class="peer-role">Content Writer</div>
+                    <div class="peer-progress"><div class="peer-progress-bar" style="width: 75%"></div></div>
+                    <div class="peer-status">75% completed</div>
+                </div>
+                <div class="peer-card" data-student-id="3">
+                    <img src="../images/avatars/image 1.jpg" alt="Priyanka Reddy" class="peer-avatar">
+                    <div class="peer-name">Priyanka Reddy</div>
+                    <div class="peer-role">Video Editor</div>
+                    <div class="peer-progress"><div class="peer-progress-bar" style="width: 68%"></div></div>
+                    <div class="peer-status">68% completed</div>
+                </div>
+                <div class="peer-card" data-student-id="4">
+                    <img src="../images/avatars/image 3.jpg" alt="Varun Kumar" class="peer-avatar">
+                    <div class="peer-name">Varun Kumar</div>
+                    <div class="peer-role">Game Developer</div>
+                    <div class="peer-progress"><div class="peer-progress-bar" style="width: 60%"></div></div>
+                    <div class="peer-status">60% completed</div>
+                </div>
+                <div class="peer-card" data-student-id="5">
+                    <img src="../images/avatars/image 6.jpg" alt="Elena Gilbert" class="peer-avatar">
+                    <div class="peer-name">Elena Gilbert</div>
+                    <div class="peer-role">UI/UX Designer</div>
+                    <div class="peer-progress"><div class="peer-progress-bar" style="width: 55%"></div></div>
+                    <div class="peer-status">55% completed</div>
+                </div>
+                <div class="peer-card" data-student-id="6">
+                    <img src="../images/avatars/image 4.jpg" alt="Derek Sheperd" class="peer-avatar">
+                    <div class="peer-name">Derek Sheperd</div>
+                    <div class="peer-role">Data Scientist</div>
+                    <div class="peer-progress"><div class="peer-progress-bar" style="width: 50%"></div></div>
+                    <div class="peer-status">50% completed</div>
+                </div>
+            </section>
+            <aside class="side-leaderboard">
+                <h2>Leaderboard <span class="crown">🏆</span></h2>
+                <div class="top-user">
+                    <img src="../images/avatars/image 5.jpg" alt="Varsha Sharma" class="top-avatar">
+                    <div class="top-name">Varsha Sharma</div>
+                    <div class="top-status">100% completed</div>
+                </div>
+                <div class="leaderboard-list">
+                    <div class="leaderboard-entry" data-student-id="2"><span class="entry-rank">2</span><img src="../images/avatars/image 2.jpg" alt="Pranay Charlapally" class="entry-avatar"><span class="entry-name">Pranay Charlapally</span><span class="entry-status">75%</span></div>
+                    <div class="leaderboard-entry" data-student-id="3"><span class="entry-rank">3</span><img src="../images/avatars/image 1.jpg" alt="Priyanka Reddy" class="entry-avatar"><span class="entry-name">Priyanka Reddy</span><span class="entry-status">68%</span></div>
+                    <div class="leaderboard-entry" data-student-id="4"><span class="entry-rank">4</span><img src="../images/avatars/image 3.jpg" alt="Varun Kumar" class="entry-avatar"><span class="entry-name">Varun Kumar</span><span class="entry-status">60%</span></div>
+                    <div class="leaderboard-entry" data-student-id="5"><span class="entry-rank">5</span><img src="../images/avatars/image 6.jpg" alt="Elena Gilbert" class="entry-avatar"><span class="entry-name">Elena Gilbert</span><span class="entry-status">55%</span></div>
+                    <div class="leaderboard-entry" data-student-id="6"><span class="entry-rank">6</span><img src="../images/avatars/image 4.jpg" alt="Derek Sheperd" class="entry-avatar"><span class="entry-name">Derek Sheperd</span><span class="entry-status">50%</span></div>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <script>
+    document.querySelectorAll('.peer-card, .leaderboard-entry').forEach(function(card) {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function() {
+            const studentId = this.getAttribute('data-student-id');
+            if (studentId) {
+                window.location.href = `student_dashboard.html?student_id=${studentId}`;
+            }
+        });
+    });
+    </script>
+    <script>
+    function getStudentIdFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('student_id');
+    }
+
+    function renderStudentDashboard(student) {
+        // Example: update DOM elements with student info
+        document.querySelector('.username').textContent = student.name;
+        document.querySelector('.skill-score').textContent = student.skill_score;
+        // ...update other fields as needed
+
+        // Example: render projects
+        const projectsContainer = document.querySelector('.projects-grid');
+        projectsContainer.innerHTML = '';
+        student.projects.forEach(project => {
+            projectsContainer.innerHTML += `
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>${project.title}</h3>
+                        <span class="project-status ${project.status}">${project.status}</span>
+                    </div>
+                    <p class="project-description">${project.description || ''}</p>
+                    <div class="project-meta">
+                        <span class="deadline">Due: ${project.deadline}</span>
+                        <span class="difficulty">${project.difficulty || ''}</span>
+                    </div>
+                    <div class="project-progress">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: ${project.progress}%"></div>
+                        </div>
+                        <span class="progress-text">${project.progress}% Complete</span>
+                    </div>
+                </div>
+            `;
+        });
+        // ...similarly render badges, activity, etc.
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const studentId = getStudentIdFromUrl();
+        if (!studentId) {
+            alert('No student ID provided!');
+            return;
+        }
+        fetch(`/api/student_dashboard?student_id=${studentId}`, {
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.student) {
+                renderStudentDashboard(data.student);
+            } else {
+                alert('Student not found!');
+            }
+        });
+    });
+    </script>
+</body>
+</html> 

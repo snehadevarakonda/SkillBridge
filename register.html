@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SkillBridge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FF78AC;
+            --secondary-color: #A8D5E3;
+            --background-color: #F2F0EA;
+            --text-color: #333333;
+            --light-text: #666666;
+            --white: #FFFFFF;
+            --border-color: #E0E0E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .register-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .error {
+            color: var(--error-color);
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #666;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .login-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .password-requirements {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .password-requirements ul {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .password-requirements li {
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-requirements li i {
+            margin-right: 0.5rem;
+            width: 16px;
+        }
+
+        .requirement-met {
+            color: var(--primary-color);
+        }
+
+        .requirement-not-met {
+            color: var(--error-color);
+        }
+
+        .role-specific-fields {
+            display: none;
+        }
+
+        .role-specific-fields.active {
+            display: block;
+        }
+
+        .avatar-preview {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-top: 10px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .avatar-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        input[type="file"] {
+            padding: 0.5rem;
+            border: 1px dashed var(--border-color);
+            background-color: var(--white);
+        }
+
+        input[type="file"]:hover {
+            border-color: var(--primary-color);
+        }
+
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .avatar-option {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .avatar-option:hover {
+            transform: scale(1.05);
+            border-color: var(--secondary-color);
+        }
+
+        .avatar-option.selected {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .avatar-option img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="register-form">
+            <div class="header">
+                <h1>Create Account</h1>
+                <p>Join SkillBridge to start your journey</p>
+            </div>
+
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="error" id="nameError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error" id="emailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">I am a</label>
+                    <select id="role" name="role" required>
+                        <option value="">Select your role</option>
+                        <option value="student">Student</option>
+                        <option value="company">Company</option>
+                        <option value="university">University</option>
+                    </select>
+                    <div class="error" id="roleError"></div>
+                </div>
+
+                <!-- Student-specific fields -->
+                <div id="studentFields" class="role-specific-fields">
+                    <div class="form-group">
+                        <label for="university">University</label>
+                        <input type="text" id="university" name="university">
+                        <div class="error" id="universityError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="major">Major</label>
+                        <input type="text" id="major" name="major">
+                        <div class="error" id="majorError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar">Profile Picture</label>
+                        <div class="avatar-grid">
+                            <div class="avatar-option" data-avatar="avatar1.png">
+                                <img src="../images/avatars/image 1.jpg" alt="Avatar 1">
+                            </div>
+                            <div class="avatar-option" data-avatar="avatar2.png">
+                                <img src="../images/avatars/image 2.jpg" alt="Avatar 2">
+                            </div>
+                            <div class="avatar-option" data-avatar="avatar3.png">
+                                <img src="../images/avatars/image 3.jpg" alt="Avatar 3">
+                            </div>
+                            <div class="avatar-option" data-avatar="avatar4.png">
+                                <img src="../images/avatars/image 4.jpg" alt="Avatar 4">
+                            </div>
+                            <div class="avatar-option" data-avatar="avatar5.png">
+                                <img src="../images/avatars/image 5.jpg" alt="Avatar 5">
+                            </div>
+                            <div class="avatar-option" data-avatar="avatar6.png">
+                                <img src="../images/avatars/image 6.jpg" alt="Avatar 6">
+                            </div>
+                        </div>
+                        <input type="hidden" id="selectedAvatar" name="avatar">
+                        <div class="error" id="avatarError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="resume">Resume (PDF)</label>
+                        <input type="file" id="resume" name="resume" accept=".pdf">
+                        <div class="error" id="resumeError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn Profile URL</label>
+                        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/your-profile">
+                        <div class="error" id="linkedinError"></div>
+                    </div>
+                </div>
+
+                <!-- Company-specific fields -->
+                <div id="companyFields" class="role-specific-fields">
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" id="companyName" name="companyName">
+                        <div class="error" id="companyNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="industry">Industry</label>
+                        <input type="text" id="industry" name="industry">
+                        <div class="error" id="industryError"></div>
+                    </div>
+                </div>
+
+                <!-- University-specific fields -->
+                <div id="universityFields" class="role-specific-fields">
+                    <div class="form-group">
+                        <label for="institutionName">Institution Name</label>
+                        <input type="text" id="institutionName" name="institutionName">
+                        <div class="error" id="institutionNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location">
+                        <div class="error" id="locationError"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <div class="error" id="passwordError"></div>
+                    <div class="password-requirements">
+                        <p>Password must meet the following requirements:</p>
+                        <ul>
+                            <li id="lengthRequirement">
+                                <i class="fas fa-times"></i>
+                                At least 8 characters long
+                            </li>
+                            <li id="uppercaseRequirement">
+                                <i class="fas fa-times"></i>
+                                Contains uppercase letter
+                            </li>
+                            <li id="lowercaseRequirement">
+                                <i class="fas fa-times"></i>
+                                Contains lowercase letter
+                            </li>
+                            <li id="numberRequirement">
+                                <i class="fas fa-times"></i>
+                                Contains number
+                            </li>
+                            <li id="specialRequirement">
+                                <i class="fas fa-times"></i>
+                                Contains special character
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <div class="error" id="confirmPasswordError"></div>
+                </div>
+
+                <!-- <button type="submit" class="btn">Register</button> -->
+                <a href="student_dash1.html" class="btn btn-primary">Register</a>
+            </form>
+
+            <div class="login-link">
+                Already have an account? <a href="login.html">Login here</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('registerForm');
+        const roleSelect = document.getElementById('role');
+        const errors = {};
+
+        // Password validation requirements
+        const requirements = {
+            length: password => password.length >= 8,
+            uppercase: password => /[A-Z]/.test(password),
+            lowercase: password => /[a-z]/.test(password),
+            number: password => /[0-9]/.test(password),
+            special: password => /[!@#$%^&*]/.test(password)
+        };
+
+        // Update requirement indicators
+        function updateRequirements(password) {
+            Object.keys(requirements).forEach(req => {
+                const element = document.getElementById(`${req}Requirement`);
+                const icon = element.querySelector('i');
+                const isMet = requirements[req](password);
+
+                element.classList.toggle('requirement-met', isMet);
+                element.classList.toggle('requirement-not-met', !isMet);
+                icon.className = isMet ? 'fas fa-check' : 'fas fa-times';
+            });
+        }
+
+        // Show/hide role-specific fields
+        roleSelect.addEventListener('change', () => {
+            const role = roleSelect.value;
+            document.querySelectorAll('.role-specific-fields').forEach(field => {
+                field.classList.remove('active');
+            });
+            if (role) {
+                document.getElementById(`${role}Fields`).classList.add('active');
+            }
+        });
+
+        // Password input event listener
+        document.getElementById('password').addEventListener('input', (e) => {
+            updateRequirements(e.target.value);
+        });
+
+        // Replace the avatar preview functionality with avatar selection
+        document.querySelectorAll('.avatar-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from all options
+                document.querySelectorAll('.avatar-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                
+                // Update hidden input with selected avatar
+                document.getElementById('selectedAvatar').value = this.dataset.avatar;
+            });
+        });
+
+        function validateForm() {
+            let isValid = true;
+            const role = roleSelect.value;
+
+            // Clear previous errors
+            Object.keys(errors).forEach(key => {
+                errors[key] = '';
+            });
+
+            // Name validation
+            if (!form.name.value.trim()) {
+                errors.name = 'Name is required';
+                isValid = false;
+            }
+
+            // Email validation
+            if (!form.email.value.trim()) {
+                errors.email = 'Email is required';
+                isValid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value)) {
+                errors.email = 'Invalid email format';
+                isValid = false;
+            }
+
+            // Role validation
+            if (!role) {
+                errors.role = 'Please select a role';
+                isValid = false;
+            }
+
+            // Role-specific field validation
+            if (role === 'student') {
+                if (!form.university.value.trim()) {
+                    errors.university = 'University is required';
+                    isValid = false;
+                }
+                if (!form.major.value.trim()) {
+                    errors.major = 'Major is required';
+                    isValid = false;
+                }
+                if (!document.getElementById('selectedAvatar').value) {
+                    errors.avatar = 'Please select an avatar';
+                    isValid = false;
+                }
+                if (form.resume.files.length > 0) {
+                    const file = form.resume.files[0];
+                    if (file.type !== 'application/pdf') {
+                        errors.resume = 'Please upload a PDF file';
+                        isValid = false;
+                    }
+                }
+                if (form.linkedin.value.trim()) {
+                    const linkedinRegex = /^https:\/\/[a-z]{2,3}\.linkedin\.com\/.*$/i;
+                    if (!linkedinRegex.test(form.linkedin.value)) {
+                        errors.linkedin = 'Please enter a valid LinkedIn URL';
+                        isValid = false;
+                    }
+                }
+            } else if (role === 'company') {
+                if (!form.companyName.value.trim()) {
+                    errors.companyName = 'Company name is required';
+                    isValid = false;
+                }
+                if (!form.industry.value.trim()) {
+                    errors.industry = 'Industry is required';
+                    isValid = false;
+                }
+            } else if (role === 'university') {
+                if (!form.institutionName.value.trim()) {
+                    errors.institutionName = 'Institution name is required';
+                    isValid = false;
+                }
+                if (!form.location.value.trim()) {
+                    errors.location = 'Location is required';
+                    isValid = false;
+                }
+            }
+
+            // Password validation
+            const password = form.password.value;
+            const allRequirementsMet = Object.values(requirements).every(req => req(password));
+            if (!allRequirementsMet) {
+                errors.password = 'Password does not meet all requirements';
+                isValid = false;
+            }
+
+            // Confirm password validation
+            if (password !== form.confirmPassword.value) {
+                errors.confirmPassword = 'Passwords do not match';
+                isValid = false;
+            }
+
+            // Display errors
+            Object.keys(errors).forEach(key => {
+                const errorElement = document.getElementById(`${key}Error`);
+                if (errorElement) {
+                    errorElement.textContent = errors[key];
+                    errorElement.style.display = errors[key] ? 'block' : 'none';
+                }
+            });
+
+            return isValid;
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!validateForm()) {
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('name', form.name.value);
+            formData.append('email', form.email.value);
+            formData.append('password', form.password.value);
+            formData.append('role', form.role.value);
+
+            // Add role-specific data
+            if (formData.get('role') === 'student') {
+                formData.append('studentInfo[university]', form.university.value);
+                formData.append('studentInfo[major]', form.major.value);
+                formData.append('studentInfo[avatar]', document.getElementById('selectedAvatar').value);
+                if (form.resume.files.length > 0) {
+                    formData.append('studentInfo[resume]', form.resume.files[0]);
+                }
+                if (form.linkedin.value.trim()) {
+                    formData.append('studentInfo[linkedin]', form.linkedin.value);
+                }
+            } else if (formData.get('role') === 'company') {
+                formData.append('companyInfo[companyName]', form.companyName.value);
+                formData.append('companyInfo[industry]', form.industry.value);
+            } else if (formData.get('role') === 'university') {
+                formData.append('universityInfo[institutionName]', form.institutionName.value);
+                formData.append('universityInfo[location]', form.location.value);
+            }
+
+            try {
+                console.log('Sending registration request...');
+                const response = await fetch('http://localhost:3001/api/auth/register', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('Registration failed:', errorData);
+                    throw new Error(errorData.message || 'Registration failed');
+                }
+
+                const data = await response.json();
+                console.log('Registration successful:', data);
+
+                // Store token and user data
+                localStorage.setItem('token', data.data.token);
+                localStorage.setItem('user', JSON.stringify(data.data.user));
+
+                // Show success message
+                alert('Registration successful! Redirecting to dashboard...');
+                
+                // Redirect based on role
+                if (data.data.user.role === 'student') {
+                    window.location.href = 'Project/student_dash1.html';
+                } else if (data.data.user.role === 'company') {
+                    window.location.href = 'company_dashboard.html';
+                } else if (data.data.user.role === 'university') {
+                    window.location.href = 'university_dashboard.html';
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                if (error.message === 'Failed to fetch') {
+                    alert('Unable to connect to the server. Please make sure the backend server is running on port 3001.');
+                } else {
+                    alert(error.message || 'An error occurred during registration');
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Dashboard - SkillBridge</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">SkillBridge</div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#overview" class="active">
+                    <span class="icon">📊</span>
+                    Overview
+                </a>
+                <a href="#projects">
+                    <span class="icon">💼</span>
+                    Projects
+                </a>
+                <a href="#students">
+                    <span class="icon">👥</span>
+                    Students
+                </a>
+                <a href="#analytics">
+                    <span class="icon">📈</span>
+                    Analytics
+                </a>
+                <a href="#settings">
+                    <span class="icon">⚙️</span>
+                    Settings
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1>Company Dashboard</h1>
+                    <p>Welcome back, <span class="username">TechCorp Inc.</span></p>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-primary" id="new-project-btn">New Project</button>
+                    <div class="user-menu">
+                        <img src="../images/company-logo.jpg" alt="Company Logo" class="avatar">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">💼</div>
+                        <div class="stat-content">
+                            <h3>Active Projects</h3>
+                            <div class="stat-value">8</div>
+                            <p>In progress</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-content">
+                            <h3>Active Students</h3>
+                            <div class="stat-value">24</div>
+                            <p>Working on projects</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-content">
+                            <h3>Average Rating</h3>
+                            <div class="stat-value">4.6</div>
+                            <p>From students</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-content">
+                            <h3>Skill Score Range</h3>
+                            <div class="stat-value">65-85</div>
+                            <p>Current students</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Projects -->
+                <div class="section-header">
+                    <h2>Recent Projects</h2>
+                    <a href="#projects" class="view-all">View All</a>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Mobile App Development</h3>
+                            <span class="project-status in-progress">In Progress</span>
+                        </div>
+                        <p class="project-description">Develop a cross-platform mobile application for task management</p>
+                        <div class="project-meta">
+                            <span class="deadline">Due: 5 days</span>
+                            <span class="difficulty">Advanced</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-label">Students</span>
+                                <span class="stat-value">3</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Progress</span>
+                                <span class="stat-value">45%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Data Analysis</h3>
+                            <span class="project-status completed">Completed</span>
+                        </div>
+                        <p class="project-description">Analyze customer behavior data and create insights</p>
+                        <div class="project-meta">
+                            <span class="deadline">Completed</span>
+                            <span class="difficulty">Intermediate</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-label">Students</span>
+                                <span class="stat-value">2</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Rating</span>
+                                <span class="stat-value">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Students -->
+                <div class="section-header">
+                    <h2>Top Students</h2>
+                    <a href="#students" class="view-all">View All</a>
+                </div>
+                
+                <div class="students-grid">
+                    <div class="student-card">
+                        <img src="../images/student1.jpg" alt="Student" class="student-avatar">
+                        <div class="student-info">
+                            <h3>Sarah Johnson</h3>
+                            <p class="student-role">Frontend Developer</p>
+                            <div class="skill-score">
+                                <span class="score">85</span>
+                                <span class="category">Expert</span>
+                            </div>
+                        </div>
+                        <div class="student-stats">
+                            <div class="stat">
+                                <span class="stat-label">Projects</span>
+                                <span class="stat-value">5</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Rating</span>
+                                <span class="stat-value">4.9</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="student-card">
+                        <img src="../images/student2.jpg" alt="Student" class="student-avatar">
+                        <div class="student-info">
+                            <h3>Michael Chen</h3>
+                            <p class="student-role">Data Scientist</p>
+                            <div class="skill-score">
+                                <span class="score">78</span>
+                                <span class="category">Expert</span>
+                            </div>
+                        </div>
+                        <div class="student-stats">
+                            <div class="stat">
+                                <span class="stat-label">Projects</span>
+                                <span class="stat-value">4</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Rating</span>
+                                <span class="stat-value">4.7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- New Project Modal -->
+    <div class="modal" id="new-project-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Project</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="new-project-form">
+                <div class="form-group">
+                    <label for="project-title">Project Title</label>
+                    <input type="text" id="project-title" name="title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="project-description">Description</label>
+                    <textarea id="project-description" name="description" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="project-difficulty">Difficulty Level</label>
+                    <select id="project-difficulty" name="difficulty" required>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="project-deadline">Deadline</label>
+                    <input type="date" id="project-deadline" name="deadline" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Create Project</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html> 

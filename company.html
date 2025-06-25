@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companies - SkillBridge</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF78AC;
+            --secondary-color: #A8D5E3;
+            --background-color: #F2F0EA;
+            --text-color: #333333;
+            --light-text: #666666;
+            --white: #FFFFFF;
+            --border-color: #E0E0E0;
+        }
+
+        .header {
+            background: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #FF8CB4 100%);
+            padding: 6rem 0 3rem;
+            margin-top: 72px;
+        }
+
+        .hero-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--white);
+        }
+
+        .page-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .search-section {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .search-section form {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .search-section input[type="text"] {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-section input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .search-section .search-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-section .search-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .filter-btn {
+            background-color: var(--white);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .companies-section {
+            padding: 3rem 0;
+            background-color: var(--background-color);
+        }
+
+        .companies-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .company-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .company-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .company-logo {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+        }
+
+        .company-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .company-info {
+            flex: 1;
+        }
+
+        .company-info h3 {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .company-description {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .company-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-details span {
+            background-color: var(--background-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--text-color);
+        }
+
+        .company-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .company-actions .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .company-actions .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .company-actions .btn-primary:hover {
+            background-color: #FF4F8A;
+        }
+
+        .company-actions .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .company-actions .btn-secondary:hover {
+            background-color: #8cc0d3;
+        }
+
+        @media (max-width: 768px) {
+            .header .container {
+                padding: 1rem;
+            }
+
+            .nav {
+                gap: 1rem;
+            }
+
+            .hero-section {
+                padding: 5rem 0 2rem;
+            }
+
+            .page-header h2 {
+                font-size: 2rem;
+            }
+
+            .search-section {
+                padding: 1.5rem;
+            }
+
+            .company-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .company-logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .company-actions {
+                flex-direction: column;
+            }
+
+            .company-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="../images/avatars/sblogo.jpg" alt="SkillBridge Logo">
+                <h1>SkillBridge</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+                <a href="/company" class="nav-link active">Companies</a>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div class="container">
+            <div class="page-header">
+                <h2>Hiring Companies</h2>
+                <p>Discover companies looking for talented students like you</p>
+            </div>
+
+            <!-- Search Section -->
+            <section class="search-section">
+                <form action="/search" method="get">
+                    <input type="text" name="q" placeholder="Search companies..." aria-label="Search companies">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+                <div class="filter-buttons">
+                    <button class="filter-btn">All Industries</button>
+                    <button class="filter-btn">All Sizes</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Companies Section -->
+    <section class="companies-section">
+        <div class="container">
+            <div class="companies-list">
+                <!-- Company Card 1 -->
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="../images/companies/tech-innovators.svg" alt="Tech Innovators Logo">
+                    </div>
+                    <div class="company-info">
+                        <h3>Tech Innovators</h3>
+                        <p class="company-description">Leading technology solutions provider specializing in AI and machine learning.</p>
+                        <div class="company-details">
+                            <span class="location">📍 San Francisco, CA</span>
+                            <span class="size">👥 Large</span>
+                        </div>
+                        <div class="company-actions">
+                            <a href="https://techinnovators.com" target="_blank" rel="noopener" class="btn btn-primary">Visit Company</a>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company Card 2 -->
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="../images/companies/green-energy.svg" alt="Green Energy Logo">
+                    </div>
+                    <div class="company-info">
+                        <h3>Green Energy</h3>
+                        <p class="company-description">Pioneering sustainable energy solutions for a better tomorrow.</p>
+                        <div class="company-details">
+                            <span class="location">📍 Austin, TX</span>
+                            <span class="size">👥 Medium</span>
+                        </div>
+                        <div class="company-actions">
+                            <a href="https://greenenergy.com" target="_blank" rel="noopener" class="btn btn-primary">Visit Company</a>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company Card 3 -->
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="../images/companies/healthcare-plus.svg" alt="HealthCare Plus Logo">
+                    </div>
+                    <div class="company-info">
+                        <h3>HealthCare Plus</h3>
+                        <p class="company-description">Innovative healthcare technology company improving patient care.</p>
+                        <div class="company-details">
+                            <span class="location">📍 Boston, MA</span>
+                            <span class="size">👥 Large</span>
+                        </div>
+                        <div class="company-actions">
+                            <a href="https://healthcareplus.com" target="_blank" rel="noopener" class="btn btn-primary">Visit Company</a>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company Card 4 -->
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="../images/companies/edutech.svg" alt="EduTech Logo">
+                    </div>
+                    <div class="company-info">
+                        <h3>EduTech</h3>
+                        <p class="company-description">Revolutionizing education through technology and innovation.</p>
+                        <div class="company-details">
+                            <span class="location">📍 New York, NY</span>
+                            <span class="size">👥 Medium</span>
+                        </div>
+                        <div class="company-actions">
+                            <a href="https://edutech.com" target="_blank" rel="noopener" class="btn btn-primary">Visit Company</a>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company Card 5 -->
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="../images/companies/fintech.svg" alt="FinTech Logo">
+                    </div>
+                    <div class="company-info">
+                        <h3>FinTech</h3>
+                        <p class="company-description">Disrupting the financial industry with cutting-edge technology.</p>
+                        <div class="company-details">
+                            <span class="location">📍 Chicago, IL</span>
+                            <span class="size">👥 Small</span>
+                        </div>
+                        <div class="company-actions">
+                            <a href="https://fintechstartups.com" target="_blank" rel="noopener" class="btn btn-primary">Visit Company</a>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Sample company data (replace with API call in production)
+        const companies = [
+            {
+                id: 1,
+                name: "Tech Innovators Inc.",
+                description: "A leading technology company specializing in AI and machine learning solutions. We're revolutionizing industries through cutting-edge innovation and sustainable technology practices.",
+                industry: "tech",
+                size: "large",
+                logo: "../images/companies/tech-innovators.svg",
+                hiring_for: [
+                    "Senior Software Engineer",
+                    "Machine Learning Specialist",
+                    "Data Scientist",
+                    "UI/UX Designer",
+                    "DevOps Engineer"
+                ],
+                location: "San Francisco, CA",
+                website: "https://techinnovators.com",
+                founded: "2015",
+                employees: "1000+",
+                benefits: ["Competitive salary", "Health insurance", "Remote work options", "Stock options", "Learning budget"]
+            },
+            {
+                id: 2,
+                name: "Green Energy Solutions",
+                description: "Pioneering sustainable energy solutions for a better tomorrow. We're committed to developing innovative renewable energy technologies that reduce carbon footprint and promote environmental sustainability.",
+                industry: "energy",
+                size: "medium",
+                logo: "../images/companies/green-energy.svg",
+                hiring_for: [
+                    "Environmental Engineer",
+                    "Project Manager",
+                    "Research Analyst",
+                    "Solar Energy Specialist",
+                    "Sustainability Consultant"
+                ],
+                location: "Austin, TX",
+                website: "https://greenenergy.com",
+                founded: "2018",
+                employees: "250-500",
+                benefits: ["Health & wellness programs", "Flexible work hours", "Professional development", "Green initiatives", "Team building events"]
+            },
+            {
+                id: 3,
+                name: "HealthCare Plus",
+                description: "Innovative healthcare technology company improving patient care through advanced medical software solutions. We're transforming healthcare delivery with cutting-edge technology and data-driven insights.",
+                industry: "healthcare",
+                size: "large",
+                logo: "../images/companies/healthcare-plus.svg",
+                hiring_for: [
+                    "Medical Software Developer",
+                    "Healthcare Analyst",
+                    "Clinical Researcher",
+                    "Product Manager",
+                    "Quality Assurance Specialist"
+                ],
+                location: "Boston, MA",
+                website: "https://healthcareplus.com",
+                founded: "2010",
+                employees: "2000+",
+                benefits: ["Comprehensive health coverage", "401(k) matching", "Paid parental leave", "Tuition reimbursement", "On-site wellness center"]
+            },
+            {
+                id: 4,
+                name: "EduTech Solutions",
+                description: "Revolutionizing education through technology and innovation. We're creating engaging learning experiences and empowering educators with powerful tools to transform education.",
+                industry: "education",
+                size: "medium",
+                logo: "../images/companies/edutech.svg",
+                hiring_for: [
+                    "Educational Software Developer",
+                    "Content Creator",
+                    "Learning Experience Designer",
+                    "Curriculum Specialist",
+                    "Technical Writer"
+                ],
+                location: "New York, NY",
+                website: "https://edutech.com",
+                founded: "2016",
+                employees: "300-600",
+                benefits: ["Education stipend", "Remote work options", "Professional development", "Team retreats", "Flexible scheduling"]
+            },
+            {
+                id: 5,
+                name: "FinTech Startups",
+                description: "Disrupting the financial industry with cutting-edge technology. We're building innovative financial solutions that make banking and investing more accessible and efficient for everyone.",
+                industry: "finance",
+                size: "startup",
+                logo: "../images/companies/fintech.svg",
+                hiring_for: [
+                    "Blockchain Developer",
+                    "Financial Analyst",
+                    "Product Manager",
+                    "Security Engineer",
+                    "UX Researcher"
+                ],
+                location: "Chicago, IL",
+                website: "https://fintechstartups.com",
+                founded: "2020",
+                employees: "50-100",
+                benefits: ["Equity options", "Flexible PTO", "Remote-first culture", "Learning budget", "Team events"]
+            }
+        ];
+
+        // Function to create company card
+        function createCompanyCard(company) {
+            return `
+                <div class="company-card" data-industry="${company.industry}" data-size="${company.size}">
+                    <div class="company-logo">
+                        <img src="${company.logo}" alt="${company.name} Logo">
+                    </div>
+                    <div class="company-info">
+                        <h3>${company.name}</h3>
+                        <p class="company-description">${company.description}</p>
+                        <div class="company-details">
+                            <span class="location">📍 ${company.location}</span>
+                            <span class="size">👥 ${company.size}</span>
+                            <span class="founded">📅 Founded ${company.founded}</span>
+                            <span class="employees">👥 ${company.employees} employees</span>
+                        </div>
+                        <div class="hiring-positions">
+                            <h4>Hiring For:</h4>
+                            <ul>
+                                ${company.hiring_for.map(position => `<li>${position}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="company-benefits">
+                            <h4>Benefits:</h4>
+                            <ul>
+                                ${company.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="company-actions">
+                            <a href="/company/${company.id}" class="btn btn-primary">View Details</a>
+                            <a href="${company.website}" target="_blank" rel="noopener" class="btn btn-secondary">Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to filter companies
+        function filterCompanies() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const industryFilter = document.getElementById('industry-filter').value;
+            const sizeFilter = document.getElementById('size-filter').value;
+            
+            const filteredCompanies = companies.filter(company => {
+                const matchesSearch = company.name.toLowerCase().includes(searchTerm) ||
+                                    company.description.toLowerCase().includes(searchTerm);
+                const matchesIndustry = !industryFilter || company.industry === industryFilter;
+                const matchesSize = !sizeFilter || company.size === sizeFilter;
+                
+                return matchesSearch && matchesIndustry && matchesSize;
+            });
+            
+            displayCompanies(filteredCompanies);
+        }
+
+        // Function to display companies
+        function displayCompanies(companiesToShow) {
+            const companyList = document.getElementById('company-list');
+            companyList.innerHTML = companiesToShow.map(createCompanyCard).join('');
+        }
+
+        // Event listeners
+        document.getElementById('search-input').addEventListener('input', filterCompanies);
+        document.getElementById('industry-filter').addEventListener('change', filterCompanies);
+        document.getElementById('size-filter').addEventListener('change', filterCompanies);
+
+        // Initial display
+        displayCompanies(companies);
+    </script>
+</body>
+</html> 

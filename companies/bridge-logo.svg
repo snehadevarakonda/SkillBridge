@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="white"/>
+  <!-- Left figure -->
+  <circle cx="55" cy="70" r="15" fill="#FF5C9C"/>
+  <rect x="48" y="85" width="14" height="40" rx="7" fill="#222"/>
+  <rect x="35" y="120" width="40" height="12" rx="6" fill="#222"/>
+  <!-- Right figure -->
+  <rect x="135" y="55" width="30" height="30" rx="6" fill="#8cc0d3"/>
+  <rect x="148" y="85" width="14" height="40" rx="7" fill="#222"/>
+  <rect x="135" y="120" width="40" height="12" rx="6" fill="#222"/>
+  <!-- Bridge gap -->
+  <path d="M0 170 Q100 130 200 170" stroke="#222" stroke-width="12" fill="none"/>
+  <!-- Graduation cap -->
+  <rect x="90" y="90" width="20" height="8" fill="#222" transform="rotate(-15 100 94)"/>
+  <rect x="98" y="98" width="4" height="12" fill="#222"/>
+  <circle cx="100" cy="110" r="2" fill="#FF5C9C"/>
+</svg> 

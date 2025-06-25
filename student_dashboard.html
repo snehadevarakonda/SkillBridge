@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - SkillBridge</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/chatbot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="../js/chatbot.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">🤖</span>
+                    <h1>SkillBridge</h1>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#overview" class="active">
+                    <span class="icon">📊</span>
+                    Overview
+                </a>
+                <a href="#projects">
+                    <span class="icon">💼</span>
+                    Projects
+                </a>
+                <a href="#skills">
+                    <span class="icon">🎯</span>
+                    Skills
+                </a>
+                <a href="#badges">
+                    <span class="icon">🏆</span>
+                    Badges
+                </a>
+                <a href="#leaderboard">
+                    <span class="icon">📈</span>
+                    Leaderboard
+                </a>
+                <a href="#settings">
+                    <span class="icon">⚙️</span>
+                    Settings
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1>Student Dashboard</h1>
+                    <p>Welcome back, <span class="username">John Doe</span></p>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-primary">New Project</button>
+                    <div class="user-menu">
+                        <img src="../images/avatar.jpg" alt="Profile" class="avatar">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-content">
+                            <h3>Skill Score</h3>
+                            <div class="skill-score" data-score="75">75</div>
+                            <p class="skill-category">Intermediate</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">💼</div>
+                        <div class="stat-content">
+                            <h3>Completed Projects</h3>
+                            <div class="stat-value">12</div>
+                            <p>Last 6 months</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-content">
+                            <h3>Average Rating</h3>
+                            <div class="stat-value">4.8</div>
+                            <p>Based on 15 reviews</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-content">
+                            <h3>Badges Earned</h3>
+                            <div class="stat-value">8</div>
+                            <p>View all badges</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Projects -->
+                <div class="section-header">
+                    <h2>Active Projects</h2>
+                    <a href="#projects" class="view-all">View All</a>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>E-commerce Website</h3>
+                            <span class="project-status in-progress">In Progress</span>
+                        </div>
+                        <p class="project-description">Develop a responsive e-commerce website with payment integration</p>
+                        <div class="project-meta">
+                            <span class="deadline">Due: 2 days</span>
+                            <span class="difficulty">Intermediate</span>
+                        </div>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress progress-65"></div>
+                            </div>
+                            <span class="progress-text">65% Complete</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Data Analysis Dashboard</h3>
+                            <span class="project-status in-progress">In Progress</span>
+                        </div>
+                        <p class="project-description">Create an interactive dashboard for sales data visualization</p>
+                        <div class="project-meta">
+                            <span class="deadline">Due: 5 days</span>
+                            <span class="difficulty">Advanced</span>
+                        </div>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress progress-30"></div>
+                            </div>
+                            <span class="progress-text">30% Complete</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="section-header">
+                    <h2>Recent Activity</h2>
+                </div>
+                
+                <div class="activity-feed">
+                    <div class="activity-item">
+                        <div class="activity-icon">🎯</div>
+                        <div class="activity-content">
+                            <p>Skill Score increased to 75</p>
+                            <span class="activity-time">2 hours ago</span>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon">💼</div>
+                        <div class="activity-content">
+                            <p>Completed project "Mobile App Design"</p>
+                            <span class="activity-time">1 day ago</span>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon">🏆</div>
+                        <div class="activity-content">
+                            <p>Earned "Frontend Expert" badge</p>
+                            <span class="activity-time">2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <div class="chatbot-container" style="display: none;">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <span class="chatbot-icon">🤖</span>
+                <h2>SkillBridge Assistant</h2>
+            </div>
+            <button class="close-btn">×</button>
+        </div>
+        
+        <div class="chatbot-messages">
+            <div class="message bot">
+                <div class="message-content">
+                    Hello! I'm your SkillBridge assistant. How can I help you today?
+                </div>
+            </div>
+        </div>
+        
+        <div class="chatbot-input">
+            <input type="text" placeholder="Type your message here..." id="user-input">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+</body>
+</html> 

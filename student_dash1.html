@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - SkillBridge</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/chatbot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="../js/chatbot.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">🤖</span>
+                    <h1>SkillBridge</h1>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#overview" class="active">
+                    <span class="icon">📊</span>
+                    Overview
+                </a>
+                <a href="#projects">
+                    <span class="icon">💼</span>
+                    Projects
+                </a>
+                <a href="#skills">
+                    <span class="icon">🎯</span>
+                    Skills
+                </a>
+                <a href="#badges">
+                    <span class="icon">🏆</span>
+                    Badges
+                </a>
+                <a href="#leaderboard">
+                    <span class="icon">📈</span>
+                    Leaderboard
+                </a>
+                <a href="#settings">
+                    <span class="icon">⚙️</span>
+                    Settings
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1>Student Dashboard</h1>
+                    <p>Welcome back, <span class="username">SnehaDevarakonda</span></p>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-primary">New Project</button>
+                    <div class="user-menu">
+                        <img src="../images/avatars/image 1.jpg" alt="Profile" class="avatar">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-content">
+                            <h3>Skill Score</h3>
+                            <div class="skill-score" data-score="75">0</div>
+                            <p class="skill-category">Beginner</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">💼</div>
+                        <div class="stat-content">
+                            <h3>Completed Projects</h3>
+                            <div class="stat-value">0</div>
+                            <p>Last 6 months</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-content">
+                            <h3>Average Rating</h3>
+                            <div class="stat-value">0</div>
+                            <p>Based on 15 reviews</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-content">
+                            <h3>Badges Earned</h3>
+                            <div class="stat-value">0</div>
+                            <p>View all badges</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resume and LinkedIn Section -->
+                <div class="profile-sections">
+                    <!-- Resume Section -->
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <span class="icon">📄</span>
+                            <h3>Resume</h3>
+                        </div>
+                        <div class="profile-card-content">
+                            <div class="resume-preview">
+                                <div class="resume-icon">📄</div>
+                                <div class="resume-info">
+                                    <p class="resume-name">resume.pdf</p>
+                                    
+                                    <!-- <p class="resume-date">Uploaded: Jan 15, 2024</p> -->
+                                </div>
+                            </div>
+                            <div class="resume-actions">
+                                <a href="my_resume.pdf" class="btn btn-primary">View Resume</a>
+                                <button class="btn btn-outline">Update Resume</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LinkedIn Section -->
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <span class="icon">🔗</span>
+                            <h3>LinkedIn Profile</h3>
+                        </div>
+                        <div class="profile-card-content">
+                            <div class="linkedin-preview">
+                                <div class="linkedin-icon">🔗</div>
+                                <div class="linkedin-info">
+                                    <p class="linkedin-url">linkedin.com/in/snehadevarakonda</p>
+                                    <p class="linkedin-status">Connected</p>
+                                </div>
+                            </div>
+                            <div class="linkedin-actions">
+                                <!-- <button class="btn btn-primary">View Profile</button> -->
+                                <a href="https://www.linkedin.com/in/sneha-devarakonda-a7b498284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="btn btn-primary">View Profile</a>
+
+                                <button class="btn btn-outline">Update Link</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <div class="chatbot-container" style="display: none;">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <span class="chatbot-icon">🤖</span>
+                <h2>SkillBridge Assistant</h2>
+            </div>
+            <button class="close-btn">×</button>
+        </div>
+        
+        <div class="chatbot-messages">
+            <div class="message bot">
+                <div class="message-content">
+                    Hello! I'm your SkillBridge assistant. How can I help you today?
+                </div>
+            </div>
+        </div>
+        
+        <div class="chatbot-input">
+            <input type="text" placeholder="Type your message here..." id="user-input">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+</body>
+</html> 
